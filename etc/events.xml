@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  Bunited
+ * @package   Bunited\CustomTabs
+ * @author    Berin Kozlic - beringgmu@gmail.com
+ * @copyright 2019 Berin Kozlic
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_generate_blocks_after">
+        <observer name="add_remove_tab" instance="Bunited\CustomTabs\Model\Observer\AddRemoveTab" />
+    </event>
+</config>

@@ -1,0 +1,27 @@
+{
+  "name": "bunited/customtabs",
+  "description": "Custom tabs for product on product page",
+  "require": {
+    "bunited/module-core": "*"
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Berin Kozlic",
+      "email": "beringgmu@gmail.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Bunited\\CustomTabs\\": ""
+    }
+  }
+}

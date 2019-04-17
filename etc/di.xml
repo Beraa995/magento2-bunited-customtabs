@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  Bunited
+ * @package   Bunited\CustomTabs
+ * @author    Berin Kozlic - beringgmu@gmail.com
+ * @copyright 2019 Berin Kozlic
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Bunited\CustomTabs\Api\Data\TabInterface" type="Bunited\CustomTabs\Model\Tab" />
+
+    <virtualType name="Bunited\CustomTabs\Model\ResourceModel\Tab\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">bunited_tabs</argument>
+            <argument name="resourceModel" xsi:type="string">Bunited\CustomTabs\Model\ResourceModel\Tab</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="tab_grid_listing_data_source" xsi:type="string">Bunited\CustomTabs\Model\ResourceModel\Tab\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\View\Details">
+        <plugin name="custom_tab_plugin" type="Bunited\CustomTabs\Plugin\TabOrder" sortOrder="10" disabled="false" />
+    </type>
+</config>
