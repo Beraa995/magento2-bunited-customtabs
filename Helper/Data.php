@@ -24,8 +24,11 @@ class Data extends AbstractHelper
      */
     const XML_PATH_ENABLED = 'custom_tab_general/general/enabled';
     const XML_PATH_HIDE_DETAILS = 'custom_tab_general/default_tabs/details';
+    const XML_PATH_HIDE_DETAILS_SORT = 'custom_tab_general/default_tabs_sort/details_sort';
     const XML_PATH_HIDE_MORE = 'custom_tab_general/default_tabs/more';
+    const XML_PATH_HIDE_MORE_SORT = 'custom_tab_general/default_tabs_sort/more_sort';
     const XML_PATH_HIDE_REVIEWS = 'custom_tab_general/default_tabs/review';
+    const XML_PATH_HIDE_REVIEWS_SORT = 'custom_tab_general/default_tabs_sort/review_sort';
 
     /**
      * Extension config
@@ -68,6 +71,16 @@ class Data extends AbstractHelper
     }
 
     /**
+     * Get details tab sort
+     *
+     * @return boolean
+     */
+    public function getSortDetails()
+    {
+        return $this->config->getValue(self::XML_PATH_HIDE_DETAILS_SORT, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
      * Check if more information tab is hidden
      *
      * @return boolean
@@ -78,6 +91,16 @@ class Data extends AbstractHelper
     }
 
     /**
+     * Get more information tab sort
+     *
+     * @return boolean
+     */
+    public function getSortMoreInfo()
+    {
+        return $this->config->getValue(self::XML_PATH_HIDE_MORE_SORT, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
      * Check if reviews tab is hidden
      *
      * @return boolean
@@ -85,5 +108,15 @@ class Data extends AbstractHelper
     public function hideReviews()
     {
         return $this->config->getValue(self::XML_PATH_HIDE_REVIEWS, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
+     * Get reviews tab sort
+     *
+     * @return boolean
+     */
+    public function getSortReviews()
+    {
+        return $this->config->getValue(self::XML_PATH_HIDE_REVIEWS_SORT, ScopeInterface::SCOPE_STORE);
     }
 }

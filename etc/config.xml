@@ -11,6 +11,10 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <custom_tab_general>
+            <general>
+                <enabled>1</enabled>
+            </general>
+
             <default_tabs_sort>
                 <details_sort>10</details_sort>
                 <more_sort>20</more_sort>

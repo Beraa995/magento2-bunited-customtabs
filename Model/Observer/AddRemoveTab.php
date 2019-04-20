@@ -83,24 +83,46 @@ class AddRemoveTab implements ObserverInterface
         /** @var Layout $layout */
         $layout = $observer->getLayout();
         $handle = $layout->getUpdate()->getHandles();
+
+        if ($this->helper->isEnabled() && in_array('catalog_product_view', $handle)) {
+            $this->customizeDefaultTabs($layout);
+            $this->addTabs($layout);
+        }
+    }
+
+    /**
+     * Customize default tabs on product page
+     *
+     * @param $layout
+     */
+    protected function customizeDefaultTabs($layout)
+    {
         $details = $layout->getBlock('product.info.description');
         $review = $layout->getBlock('reviews.tab');
         $moreInfo = $layout->getBlock('product.attributes');
 
-        if ($this->helper->isEnabled() && in_array('catalog_product_view', $handle)) {
-            if ($details && $this->helper->hideDetails()) {
+        if ($details) {
+            if ($this->helper->hideDetails()) {
                 $layout->unsetElement('product.info.description');
+            } else {
+                $details->setSortOrder($this->helper->getSortDetails());
             }
+        }
 
-            if ($review && $this->helper->hideReviews()) {
+        if ($review) {
+            if ($this->helper->hideReviews()) {
                 $layout->unsetElement('reviews.tab');
+            } else {
+                $review->setSortOrder($this->helper->getSortReviews());
             }
+        }
 
-            if ($moreInfo && $this->helper->hideMoreInfo()) {
+        if ($moreInfo) {
+            if ($this->helper->hideMoreInfo()) {
                 $layout->unsetElement('product.attributes');
+            } else {
+                $moreInfo->setSortOrder($this->helper->getSortMoreInfo());
             }
-
-            $this->addTabs($layout);
         }
     }
 
